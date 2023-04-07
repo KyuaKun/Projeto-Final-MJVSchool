@@ -1,30 +1,58 @@
 import ChampionRepository from "../repository/ChampionRepository";
-import { InsertChampionProps } from "../types/Champion/InsertChampion";
+import { ChampionProps } from "../types/Champion/Champion";
 import { UpdateChampionProps } from "../types/Champion/UpdateChampion";
+import { ChampionInputError } from "../Error/Champion/ChampionError";
 
 class ChampionService {
-  insertChampion(champion: InsertChampionProps) {
-    const existDoc = ChampionRepository.showByName(champion.name);
+  async insertChampion(champion: ChampionProps) {
+    const { name, price, role } = champion;
+
+    if (!name || !price || !role) {
+      throw new ChampionInputError("Preencha todos os campos corretamente");
+    }
+
+    const existDoc = await ChampionRepository.showByName(name);
     if (!existDoc) {
       return ChampionRepository.store(champion);
     }
 
-    return new Error("Esse nome de campeão já existe.");
+    throw new ChampionInputError("Já existe um campeão com este nome.");
   }
 
-  updateChampion(id: string, champion: UpdateChampionProps) {
-    return ChampionRepository.update(id, champion);
+  async updateChampion(id: string, championDoc: UpdateChampionProps) {
+    const listOfChampion = await this.indexChampions();
+
+    const existingName = listOfChampion
+      .map((item) => item.name)
+      .find((champion) => champion === championDoc.name);
+
+    if (existingName) {
+      throw new ChampionInputError("já tem");
+    }
+    console.log("cheguei aqui");
+    const updatedChampion = await ChampionRepository.update(id, championDoc);
+    return updatedChampion;
   }
 
-  indexChampions() {
-    return ChampionRepository.index();
+  async indexChampions() {
+    const listOfChampions = await ChampionRepository.index();
+
+    if (listOfChampions.length === 0) {
+      throw new ChampionInputError("Nenhum campeão encontrado");
+    }
+
+    return listOfChampions;
   }
 
-  showOneChampion(id: string) {
+  showOneChampionById(id: string) {
     return ChampionRepository.show(id);
   }
 
-  destroyOneChampion(id: string) {
+  showOneChampionByName(name: string) {
+    return ChampionRepository.showByName(name);
+  }
+
+  destroyOneChampionById(id: string) {
     return ChampionRepository.destroy(id);
   }
 }

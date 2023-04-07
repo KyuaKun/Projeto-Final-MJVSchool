@@ -1,10 +1,13 @@
 import { Champion } from "../schema/ChampionScheema";
-import { InsertChampionProps } from "../types/Champion/InsertChampion";
+import { ChampionProps } from "../types/Champion/Champion";
 import { UpdateChampionProps } from "../types/Champion/UpdateChampion";
 
 class ChampionRepository {
-  store(champion: InsertChampionProps) {
-    return Champion.create(champion);
+  store(champion: ChampionProps) {
+    return Champion.create({
+      ...champion,
+      active: champion.active ?? true,
+    });
   }
 
   update(id: string, champion: UpdateChampionProps) {
@@ -12,7 +15,7 @@ class ChampionRepository {
   }
 
   index() {
-    return Champion.find();
+    return Champion.find({}, " -active -createdAt -updatedAt");
   }
 
   show(id: string) {

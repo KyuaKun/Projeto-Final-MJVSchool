@@ -1,4 +1,4 @@
-export type InsertChampionProps = {
+export type ChampionProps = {
   name: string;
   price: number;
   role: string;

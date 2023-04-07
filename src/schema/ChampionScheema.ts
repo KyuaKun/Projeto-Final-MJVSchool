@@ -1,14 +1,7 @@
 import { Schema, model } from "mongoose";
+import { ChampionProps } from "../types/Champion/Champion";
 
-export interface IChampion {
-  name: string;
-  price: number;
-  role: string;
-  active: boolean;
-  releaseDateOf(): string;
-}
-
-const ChampioSchema = new Schema<IChampion>(
+const ChampioSchema = new Schema<ChampionProps>(
   {
     name: { type: String, required: true },
     price: { type: Number, required: true },
@@ -18,13 +11,4 @@ const ChampioSchema = new Schema<IChampion>(
   { versionKey: false, timestamps: true }
 );
 
-ChampioSchema.methods.releaseDateOf = function () {
-  const date = new Date();
-  const day = String(date.getDay()).padStart(2, "0");
-  const month = String(date.getMonth()).padStart(2, "0");
-  const year = date.getFullYear();
-  const fullDate = `${day}/${month}/${year}`;
-  return fullDate;
-};
-
-export const Champion = model<IChampion>("Champion", ChampioSchema);
+export const Champion = model<ChampionProps>("Champion", ChampioSchema);
