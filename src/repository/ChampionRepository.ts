@@ -4,10 +4,7 @@ import { UpdateChampionProps } from "../types/Champion/UpdateChampion";
 
 class ChampionRepository {
   store(champion: ChampionProps) {
-    return Champion.create({
-      ...champion,
-      active: champion.active ?? true,
-    });
+    return Champion.create(champion);
   }
 
   update(id: string, champion: UpdateChampionProps) {
