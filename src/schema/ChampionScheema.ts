@@ -6,7 +6,7 @@ const ChampionSchema = new Schema<ChampionProps>(
     name: { type: String, required: true },
     price: { type: Number, required: true },
     role: { type: String, required: true },
-    active: { type: Boolean, required: true },
+    active: { type: Boolean, required: true, default: true },
   },
   { versionKey: false, timestamps: true }
 );
