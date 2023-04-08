@@ -16,7 +16,10 @@ class ChampionService {
 
     const existDoc = await ChampionRepository.showByName(name);
     if (!existDoc) {
-      return ChampionRepository.store(champion);
+      return ChampionRepository.store({
+        ...champion,
+        active: champion.active ?? true,
+      });
     }
 
     throw new ChampionInputError("Já existe um campeão com este nome.", 400);
