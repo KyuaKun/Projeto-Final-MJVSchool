@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import { ChampionProps } from "../types/Champion/Champion";
 
-const ChampioSchema = new Schema<ChampionProps>(
+const ChampionSchema = new Schema<ChampionProps>(
   {
     name: { type: String, required: true },
     price: { type: Number, required: true },
@@ -11,4 +11,4 @@ const ChampioSchema = new Schema<ChampionProps>(
   { versionKey: false, timestamps: true }
 );
 
-export const Champion = model<ChampionProps>("Champion", ChampioSchema);
+export const Champion = model<ChampionProps>("Champion", ChampionSchema);
