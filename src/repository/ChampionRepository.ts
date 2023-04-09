@@ -12,17 +12,10 @@ class ChampionRepository {
   }
 
   index() {
-    return Champion.find(
-      { active: true },
-      " -_id -active -createdAt -updatedAt"
-    );
-  }
-
-  indexAll() {
     return Champion.find();
   }
 
-  show(id: string) {
+  showById(id: string) {
     return Champion.findById({ _id: id });
   }
 

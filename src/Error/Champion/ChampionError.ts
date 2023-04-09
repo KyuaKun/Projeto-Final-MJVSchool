@@ -1,6 +1,6 @@
-export class ChampionInputError extends Error {
+export class MyError extends Error {
   constructor(message: string, public statusError: number) {
     super(message);
-    this.name = "ChampionInputError";
+    this.name = "MyError";
   }
 }
