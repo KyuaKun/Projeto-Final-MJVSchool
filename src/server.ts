@@ -5,6 +5,7 @@ import { environment } from "./config/environment";
 //Routes
 import healthRoute from "./routes/healthRoute";
 import ChampionRoute from "./routes/ChampionRoute";
+import UserRoute from "./routes/UserRoute";
 
 class App {
   app: express.Application;
@@ -31,6 +32,7 @@ class App {
   routes() {
     this.app.use("/", healthRoute);
     this.app.use("/champion", ChampionRoute);
+    this.app.use("/user", UserRoute);
   }
 }
 
