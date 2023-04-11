@@ -2,10 +2,12 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import { environment } from "./config/environment";
+
 //Routes
 import healthRoute from "./routes/healthRoute";
 import ChampionRoute from "./routes/ChampionRoute";
 import UserRoute from "./routes/UserRoute";
+import TokenRoute from "./routes/tokenRoute";
 
 class App {
   app: express.Application;
@@ -33,6 +35,7 @@ class App {
     this.app.use("/", healthRoute);
     this.app.use("/champion", ChampionRoute);
     this.app.use("/user", UserRoute);
+    this.app.use("/token", TokenRoute);
   }
 }
 

@@ -1,5 +1,6 @@
-import { MyError } from "../Error/Champion/ChampionError";
 import UserRepository from "../repository/UserRepository";
+import BcryptService from "./BcryptService";
+import { MyError } from "../Error/Champion/ChampionError";
 import { InsertUserProps } from "../types/User/InsertUser";
 import { UpdateUserProps } from "../types/User/UpdateUser";
 
@@ -10,10 +11,12 @@ class UserService {
     if (!email || !username || !password) {
       throw new MyError("Preencha todos os campos corretamente", 400);
     }
-    
-    const existDoc = await UserRepository.showByName(username);
-    if (!existDoc) {
-      return UserRepository.store({ ...user });
+
+    const hashPassword = BcryptService.hashPassword(password);
+
+    const existUser = await UserRepository.showByName(username);
+    if (!existUser) {
+      return UserRepository.store({ ...user, password: hashPassword });
     }
 
     throw new MyError("Já existe um usuário com este nome.", 400);
