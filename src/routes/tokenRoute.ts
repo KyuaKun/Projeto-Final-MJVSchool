@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { MyError } from "../Error/Champion/ChampionError";
+import { MyError } from "../Error/MyError";
 import JwtService from "../service/JwtService";
 import { UserProps } from "../types/User/User";
 

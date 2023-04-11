@@ -1,6 +1,6 @@
 import UserRepository from "../repository/UserRepository";
 import BcryptService from "./BcryptService";
-import { MyError } from "../Error/Champion/ChampionError";
+import { MyError } from "../Error/MyError";
 import { InsertUserProps } from "../types/User/InsertUser";
 import { UpdateUserProps } from "../types/User/UpdateUser";
 

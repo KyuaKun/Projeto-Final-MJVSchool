@@ -1,7 +1,7 @@
 import UserService from "../service/UserService";
 import { Router, Request, Response } from "express";
 import { InsertUserProps } from "../types/User/InsertUser";
-import { MyError } from "../Error/Champion/ChampionError";
+import { MyError } from "../Error/MyError";
 import { UpdateUserProps } from "../types/User/UpdateUser";
 import { tokenAuthorization } from "../middleware/tokenAuthorization";
 import { rioterAuthorization } from "../middleware/rioterAuthorization";

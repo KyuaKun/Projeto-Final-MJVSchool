@@ -1,7 +1,7 @@
 import ChampionService from "../service/ChampionService";
 import { Request, Response, Router } from "express";
 import { ChampionProps } from "../types/Champion/Champion";
-import { MyError } from "../Error/Champion/ChampionError";
+import { MyError } from "../Error/MyError";
 import { UpdateChampionProps } from "../types/Champion/UpdateChampion";
 import { rioterAuthorization } from "../middleware/rioterAuthorization";
 import { tokenAuthorization } from "../middleware/tokenAuthorization";

@@ -1,4 +1,4 @@
-import { MyError } from "../Error/Champion/ChampionError";
+import { MyError } from "../Error/MyError";
 import ChampionRepository from "../repository/ChampionRepository";
 import { ChampionProps } from "../types/Champion/Champion";
 import { UpdateChampionProps } from "../types/Champion/UpdateChampion";

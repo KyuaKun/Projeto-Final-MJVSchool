@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { MyError } from "../Error/Champion/ChampionError";
+import { MyError } from "../Error/MyError";
 import { environment } from "../config/environment";
 import JwtService from "../service/JwtService";
 import UserRepository from "../repository/UserRepository";

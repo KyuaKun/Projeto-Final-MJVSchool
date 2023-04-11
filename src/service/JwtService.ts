@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { MyError } from "../Error/Champion/ChampionError";
+import { MyError } from "../Error/MyError";
 import { environment } from "../config/environment";
 import UserRepository from "../repository/UserRepository";
 import BcryptService from "./BcryptService";
