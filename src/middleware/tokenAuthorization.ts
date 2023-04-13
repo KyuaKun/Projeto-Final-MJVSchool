@@ -3,6 +3,8 @@ import { MyError } from "../Error/MyError";
 import { environment } from "../config/environment";
 import JwtService from "../service/JwtService";
 import UserRepository from "../repository/UserRepository";
+import { loginRequiredError } from "../Error/loginRequiredError";
+import { invalidUserError } from "../Error/invalidUserError";
 
 export const tokenAuthorization = async (
   req: Request,
@@ -13,14 +15,14 @@ export const tokenAuthorization = async (
     const authToken = req.headers["authorization"];
 
     if (!authToken) {
-      throw new MyError("Necessário fazer login.", 401);
+      throw new loginRequiredError();
     }
 
     const bearer = authToken?.split(" ");
     const token = bearer[1];
 
     if (!token) {
-      throw new MyError("Necessário fazer login.", 401);
+      throw new loginRequiredError();
     }
 
     const data = JwtService.jwtVerify(token, environment.tokenSecret);
@@ -29,7 +31,7 @@ export const tokenAuthorization = async (
     const { id, email, username, role } = payload;
     const user = await UserRepository.verifyUserDoc(username, email);
     if (!user) {
-      throw new MyError("Usuário inválido.", 401);
+      throw new invalidUserError();
     }
     req.userId = id;
     req.userEmail = email;
@@ -38,7 +40,10 @@ export const tokenAuthorization = async (
 
     next();
   } catch (error) {
-    if (error instanceof MyError) {
+    if (error instanceof loginRequiredError) {
+      return res.status(error.statusError).send({ message: error.message });
+    }
+    if (error instanceof invalidUserError) {
       return res.status(error.statusError).send({ message: error.message });
     }
     return res.status(500).send({ message: "Erro interno do servidor." });

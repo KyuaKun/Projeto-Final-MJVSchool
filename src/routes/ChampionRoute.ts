@@ -1,10 +1,13 @@
-import ChampionService from "../service/ChampionService";
 import { Request, Response, Router } from "express";
-import { ChampionProps } from "../types/Champion/Champion";
-import { MyError } from "../Error/MyError";
-import { UpdateChampionProps } from "../types/Champion/UpdateChampion";
+import { idEmptyError } from "../Error/IdEmptyError";
+import { dataNotFoundError } from "../Error/dataNotFoundError";
+import { fieldsEmptyError } from "../Error/fieldsEmptyError";
+import { invalidNameError } from "../Error/invalidNameError";
 import { rioterAuthorization } from "../middleware/rioterAuthorization";
 import { tokenAuthorization } from "../middleware/tokenAuthorization";
+import ChampionService from "../service/ChampionService";
+import { ChampionProps } from "../types/Champion/Champion";
+import { UpdateChampionProps } from "../types/Champion/UpdateChampion";
 const championRoute = Router();
 
 championRoute.get(
@@ -15,7 +18,7 @@ championRoute.get(
       const listOfChampions = await ChampionService.listChampions();
       return res.status(200).send({ message: listOfChampions });
     } catch (error) {
-      if (error instanceof MyError) {
+      if (error instanceof dataNotFoundError) {
         return res.status(error.statusError).send({ message: error.message });
       }
       return res.status(500).send({ message: "Erro interno do servidor." });
@@ -32,7 +35,10 @@ championRoute.get(
       const champion = await ChampionService.showOneChampionByName(name);
       return res.status(200).send({ message: champion });
     } catch (error) {
-      if (error instanceof MyError) {
+      if (error instanceof fieldsEmptyError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof dataNotFoundError) {
         return res.status(error.statusError).send({ message: error.message });
       }
       return res.status(500).send({ message: "Erro interno do servidor." });
@@ -51,7 +57,10 @@ championRoute.get(
 
       return res.status(200).send({ message: champion });
     } catch (error) {
-      if (error instanceof MyError) {
+      if (error instanceof idEmptyError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof dataNotFoundError) {
         return res.status(error.statusError).send({ message: error.message });
       }
       return res.status(500).send({ message: "Erro interno do servidor." });
@@ -68,7 +77,10 @@ championRoute.post(
       const newChampion = await ChampionService.insertChampion(props);
       return res.status(201).send({ message: newChampion });
     } catch (error) {
-      if (error instanceof MyError) {
+      if (error instanceof fieldsEmptyError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof invalidNameError) {
         return res.status(error.statusError).send({ message: error.message });
       }
       return res.status(500).send({ message: "Erro interno do servidor." });
@@ -89,7 +101,10 @@ championRoute.put(
 
       return res.status(200).send({ message: updatedChampion });
     } catch (error) {
-      if (error instanceof MyError) {
+      if (error instanceof invalidNameError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof idEmptyError) {
         return res.status(error.statusError).send({ message: error.message });
       }
       return res.status(500).send({ message: "Erro interno do servidor." });
@@ -106,7 +121,15 @@ championRoute.delete(
 
       await ChampionService.destroyOneChampionById(id);
       return res.status(200).send({ message: "Campeão deletado." });
-    } catch (error) {}
+    } catch (error) {
+      if (error instanceof idEmptyError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof dataNotFoundError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      return res.status(500).send({ message: "Erro interno do servidor." });
+    }
   }
 );
 

@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { MyError } from "../Error/MyError";
+import { invalidCredentialsError } from "../Error/invalidCredentialsError";
 import { environment } from "../config/environment";
 import UserRepository from "../repository/UserRepository";
 import BcryptService from "./BcryptService";
@@ -26,16 +26,16 @@ class JwtService {
 
   async generateToken(email: string, password: string) {
     if (!email || !password) {
-      throw new MyError("credenciais inválidas.", 401);
+      throw new invalidCredentialsError();
     }
 
     const user = await UserRepository.showByEmail(email);
     if (!user) {
-      throw new MyError("credenciais inválidas.", 401);
+      throw new invalidCredentialsError();
     }
 
     if (!BcryptService.comparePassword(password, user.password)) {
-      throw new MyError("credenciais inválidas.", 401);
+      throw new invalidCredentialsError();
     }
 
     const { id, username, role } = user;

@@ -1,15 +1,18 @@
+import { invalidNameError } from "../Error/invalidNameError";
 import UserRepository from "../repository/UserRepository";
-import BcryptService from "./BcryptService";
-import { MyError } from "../Error/MyError";
 import { InsertUserProps } from "../types/User/InsertUser";
 import { UpdateUserProps } from "../types/User/UpdateUser";
+import { idEmptyError } from "./../Error/IdEmptyError";
+import { dataNotFoundError } from "./../Error/dataNotFoundError";
+import { fieldsEmptyError } from "./../Error/fieldsEmptyError";
+import BcryptService from "./BcryptService";
 
 class UserService {
   async insertUser(user: InsertUserProps) {
     const { email, username, password } = user;
 
     if (!email || !username || !password) {
-      throw new MyError("Preencha todos os campos corretamente", 400);
+      throw new fieldsEmptyError();
     }
 
     const hashPassword = BcryptService.hashPassword(password);
@@ -19,26 +22,25 @@ class UserService {
       return UserRepository.store({ ...user, password: hashPassword });
     }
 
-    throw new MyError("Já existe um usuário com este nome.", 400);
+    throw new invalidNameError();
   }
 
   async listUsers() {
     const listUsers = await UserRepository.index();
     if (listUsers.length === 0) {
-      console.log("entrei");
-      throw new MyError("Nenhum usuário no banco de dados.", 200);
+      throw new dataNotFoundError();
     }
     return listUsers;
   }
 
   async readOneUser(id: string) {
     if (!id) {
-      throw new MyError("ID é um campo obrigatório.", 400);
+      throw new idEmptyError();
     }
 
     const user = await UserRepository.showById(id);
     if (!user) {
-      throw new MyError("Usuário não encontrado ou não existe.", 400);
+      throw new dataNotFoundError();
     }
     return user;
   }
@@ -49,7 +51,7 @@ class UserService {
     }
     const player = await UserRepository.showByName(username);
     if (!player) {
-      throw new MyError("Usuário não encontrado.", 400);
+      throw new dataNotFoundError();
     }
 
     return player;
@@ -58,28 +60,28 @@ class UserService {
   async updateYourself(id: string, user: UpdateUserProps) {
     if (!id) {
       if (!id) {
-        throw new MyError("ID é um campo obrigatório.", 400);
+        throw new idEmptyError();
       }
     }
     const userDoc = await UserRepository.showById(id);
     if (!userDoc) {
-      throw new MyError("Não encontrado", 401);
+      throw new dataNotFoundError();
     }
     const existUsername = await UserRepository.showByName(userDoc.username);
     if (!existUsername) {
       const updateUser = await UserRepository.update(id, { ...user });
       return updateUser;
     }
-    throw new MyError("Username não disponível", 400);
+    throw new invalidNameError();
   }
 
   async destroy(id: string) {
     if (!id) {
-      throw new MyError("ID é um campo obrigatório.", 400);
+      throw new idEmptyError();
     }
     const user = await UserRepository.destroy(id);
     if (!user) {
-      throw new MyError("ID de usuário não encontrado.", 400);
+      throw new dataNotFoundError();
     }
     return;
   }

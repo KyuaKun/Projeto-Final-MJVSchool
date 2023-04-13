@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { MyError } from "../Error/MyError";
+import { invalidCredentialsError } from "../Error/invalidCredentialsError";
 import JwtService from "../service/JwtService";
 import { UserProps } from "../types/User/User";
 
@@ -11,7 +11,7 @@ tokenRoute.post("/store", async (req: Request, res: Response) => {
     const data = await JwtService.generateToken(email, password);
     return res.status(200).send({ message: data });
   } catch (error) {
-    if (error instanceof MyError) {
+    if (error instanceof invalidCredentialsError) {
       return res.status(error.statusError).send({ message: error.message });
     }
     return res.status(500).send({ message: "Erro interno do servidor." });
