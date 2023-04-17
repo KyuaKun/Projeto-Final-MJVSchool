@@ -14,9 +14,9 @@ class ChampionService {
       throw new fieldsEmptyError();
     }
 
-    const existDoc = await ChampionRepository.showByName(name);
+    const existDoc = await ChampionRepository.findChampionByName(name);
     if (!existDoc) {
-      return ChampionRepository.store(champion);
+      return ChampionRepository.createChampion(champion);
     }
 
     throw new invalidNameError();
@@ -37,12 +37,15 @@ class ChampionService {
     if (existingName) {
       throw new invalidNameError();
     }
-    const updatedChampion = await ChampionRepository.update(id, championDoc);
+    const updatedChampion = await ChampionRepository.updateChampion(
+      id,
+      championDoc
+    );
     return updatedChampion;
   }
 
   async listChampions() {
-    const listOfChampions = await ChampionRepository.index();
+    const listOfChampions = await ChampionRepository.listAllChampion();
 
     if (listOfChampions.length === 0) {
       throw new dataNotFoundError();
@@ -56,7 +59,7 @@ class ChampionService {
       throw new idEmptyError();
     }
 
-    const champion = await ChampionRepository.showById(id);
+    const champion = await ChampionRepository.findChampionById(id);
 
     if (!champion) {
       throw new dataNotFoundError();
@@ -69,7 +72,7 @@ class ChampionService {
       throw new fieldsEmptyError();
     }
 
-    const champion = await ChampionRepository.showByName(name);
+    const champion = await ChampionRepository.findChampionByName(name);
 
     if (!champion) {
       throw new dataNotFoundError();

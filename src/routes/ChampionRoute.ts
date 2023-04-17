@@ -8,6 +8,8 @@ import { tokenAuthorization } from "../middleware/tokenAuthorization";
 import ChampionService from "../service/ChampionService";
 import { ChampionProps } from "../types/Champion/Champion";
 import { UpdateChampionProps } from "../types/Champion/UpdateChampion";
+import { loginRequiredError } from "../Error/loginRequiredError";
+import { invalidUserError } from "../Error/invalidUserError";
 const championRoute = Router();
 
 championRoute.get(
@@ -19,6 +21,9 @@ championRoute.get(
       return res.status(200).send({ message: listOfChampions });
     } catch (error) {
       if (error instanceof dataNotFoundError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof loginRequiredError) {
         return res.status(error.statusError).send({ message: error.message });
       }
       return res.status(500).send({ message: "Erro interno do servidor." });
@@ -39,6 +44,9 @@ championRoute.get(
         return res.status(error.statusError).send({ message: error.message });
       }
       if (error instanceof dataNotFoundError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof loginRequiredError) {
         return res.status(error.statusError).send({ message: error.message });
       }
       return res.status(500).send({ message: "Erro interno do servidor." });
@@ -63,6 +71,12 @@ championRoute.get(
       if (error instanceof dataNotFoundError) {
         return res.status(error.statusError).send({ message: error.message });
       }
+      if (error instanceof loginRequiredError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof invalidUserError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
       return res.status(500).send({ message: "Erro interno do servidor." });
     }
   }
@@ -81,6 +95,12 @@ championRoute.post(
         return res.status(error.statusError).send({ message: error.message });
       }
       if (error instanceof invalidNameError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof loginRequiredError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof invalidUserError) {
         return res.status(error.statusError).send({ message: error.message });
       }
       return res.status(500).send({ message: "Erro interno do servidor." });
@@ -107,6 +127,12 @@ championRoute.put(
       if (error instanceof idEmptyError) {
         return res.status(error.statusError).send({ message: error.message });
       }
+      if (error instanceof loginRequiredError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof invalidUserError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
       return res.status(500).send({ message: "Erro interno do servidor." });
     }
   }
@@ -126,6 +152,12 @@ championRoute.delete(
         return res.status(error.statusError).send({ message: error.message });
       }
       if (error instanceof dataNotFoundError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof loginRequiredError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof invalidUserError) {
         return res.status(error.statusError).send({ message: error.message });
       }
       return res.status(500).send({ message: "Erro interno do servidor." });

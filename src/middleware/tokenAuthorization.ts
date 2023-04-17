@@ -1,10 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import { MyError } from "../Error/MyError";
-import { environment } from "../config/environment";
-import JwtService from "../service/JwtService";
-import UserRepository from "../repository/UserRepository";
-import { loginRequiredError } from "../Error/loginRequiredError";
 import { invalidUserError } from "../Error/invalidUserError";
+import { loginRequiredError } from "../Error/loginRequiredError";
+import { environment } from "../config/environment";
+import UserRepository from "../repository/UserRepository";
+import JwtService from "../service/JwtService";
 
 export const tokenAuthorization = async (
   req: Request,

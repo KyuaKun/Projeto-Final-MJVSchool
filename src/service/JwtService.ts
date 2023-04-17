@@ -29,7 +29,7 @@ class JwtService {
       throw new invalidCredentialsError();
     }
 
-    const user = await UserRepository.showByEmail(email);
+    const user = await UserRepository.findUserByEmail(email);
     if (!user) {
       throw new invalidCredentialsError();
     }

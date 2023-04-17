@@ -5,14 +5,16 @@ import { fieldsEmptyError } from "../Error/fieldsEmptyError";
 import { invalidNameError } from "../Error/invalidNameError";
 import { rioterAuthorization } from "../middleware/rioterAuthorization";
 import { tokenAuthorization } from "../middleware/tokenAuthorization";
-import UserService from "../service/UserService";
 import { InsertUserProps } from "../types/User/InsertUser";
 import { UpdateUserProps } from "../types/User/UpdateUser";
+import UserService from "../service/UserService";
+import { loginRequiredError } from "../Error/loginRequiredError";
+import { invalidUserError } from "../Error/invalidUserError";
 
 const userRoute = Router();
 
 userRoute.get(
-  "/index",
+  "/list_all_user",
   rioterAuthorization,
   async (_req: Request, res: Response) => {
     try {
@@ -22,17 +24,23 @@ userRoute.get(
       if (error instanceof dataNotFoundError) {
         return res.status(error.statusError).send({ message: error.message });
       }
+      if (error instanceof loginRequiredError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof invalidUserError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
       return res.status(500).send({ message: "Erro interno do servidor." });
     }
   }
 );
 
 userRoute.get(
-  "/read",
-  tokenAuthorization,
+  "/read_one_user",
+  rioterAuthorization,
   async (req: Request, res: Response) => {
     try {
-      const user = await UserService.readOneUser(req.userId);
+      const user = await UserService.readUserById(req.userId);
       return res.status(200).send({ message: user });
     } catch (error) {
       if (error instanceof idEmptyError) {
@@ -40,6 +48,12 @@ userRoute.get(
       }
 
       if (error instanceof dataNotFoundError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof loginRequiredError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof invalidUserError) {
         return res.status(error.statusError).send({ message: error.message });
       }
       return res.status(500).send({ message: "Erro interno do servidor." });
@@ -57,6 +71,9 @@ userRoute.get(
       return res.status(200).send({ message: player });
     } catch (error) {
       if (error instanceof dataNotFoundError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof loginRequiredError) {
         return res.status(error.statusError).send({ message: error.message });
       }
       return res.status(500).send({ message: "Erro interno do servidor." });
@@ -112,7 +129,7 @@ userRoute.put(
   async (req: Request, res: Response) => {
     try {
       const props: UpdateUserProps = req.body;
-      const _updateUser = await UserService.updateYourself(req.userId, props);
+      const _updateUser = await UserService.update(req.userId, props);
       return res.status(200).send({ message: "Usuário atualizdo." });
     } catch (error) {
       if (error instanceof idEmptyError) {
@@ -124,6 +141,40 @@ userRoute.put(
       if (error instanceof invalidNameError) {
         return res.status(error.statusError).send({ message: error.message });
       }
+      if (error instanceof loginRequiredError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+
+      return res.status(500).send({ message: "Erro interno do servidor." });
+    }
+  }
+);
+
+userRoute.put(
+  "/rioter-update-one/:id",
+  rioterAuthorization,
+  async (req: Request, res: Response) => {
+    try {
+      const props: UpdateUserProps = req.body;
+      const _updateUser = await UserService.update(req.body.id, props);
+      return res.status(200).send({ message: "Usuário atualizdo." });
+    } catch (error) {
+      if (error instanceof idEmptyError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof dataNotFoundError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof invalidNameError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof loginRequiredError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof invalidUserError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+
       return res.status(500).send({ message: "Erro interno do servidor." });
     }
   }
@@ -142,6 +193,12 @@ userRoute.delete(
         return res.status(error.statusError).send({ message: error.message });
       }
       if (error instanceof dataNotFoundError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof loginRequiredError) {
+        return res.status(error.statusError).send({ message: error.message });
+      }
+      if (error instanceof invalidUserError) {
         return res.status(error.statusError).send({ message: error.message });
       }
       return res.status(500).send({ message: "Erro interno do servidor." });

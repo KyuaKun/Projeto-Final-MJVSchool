@@ -3,19 +3,19 @@ import { InsertUserProps } from "../types/User/InsertUser";
 import { UpdateUserProps } from "../types/User/UpdateUser";
 
 class UserRepository {
-  store(user: InsertUserProps) {
+  createUser(user: InsertUserProps) {
     return User.create(user);
   }
 
-  update(id: string, user: UpdateUserProps) {
+  findByIdAndUpdate(id: string, user: UpdateUserProps) {
     return User.findByIdAndUpdate({ _id: id }, { $set: user });
   }
 
-  index() {
+  listAllUsers() {
     return User.find();
   }
 
-  showById(id: string) {
+  findUserById(id: string) {
     return User.findById(
       { _id: id },
       "-_id -active -createdAt -updatedAt -role -password -email"
@@ -30,18 +30,18 @@ class UserRepository {
     return User.findOne({ username: username, email: email });
   } // sem uso
 
-  showByName(username: string) {
+  findUserByUsername(username: string) {
     return User.findOne(
       { username: username },
       "-_id -active -createdAt -updatedAt -ip -rp -password -role -id -email"
     );
   }
 
-  showByEmail(email: string) {
+  findUserByEmail(email: string) {
     return User.findOne({ email: email });
   }
 
-  destroy(id: string) {
+  deleteUserById(id: string) {
     return User.findByIdAndDelete({ _id: id });
   }
 }

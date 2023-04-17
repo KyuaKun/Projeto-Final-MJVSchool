@@ -16,29 +16,31 @@ class UserService {
     }
 
     const hashPassword = BcryptService.hashPassword(password);
+    const existEmail = await UserRepository.findUserByEmail(email);
+    const existUsername = await UserRepository.findUserByUsername(username);
 
-    const existUser = await UserRepository.showByName(username);
-    if (!existUser) {
-      return UserRepository.store({ ...user, password: hashPassword });
+    if (!existUsername && !existEmail) {
+      return UserRepository.createUser({ ...user, password: hashPassword });
     }
 
     throw new invalidNameError();
   }
 
   async listUsers() {
-    const listUsers = await UserRepository.index();
+    const listUsers = await UserRepository.listAllUsers();
     if (listUsers.length === 0) {
       throw new dataNotFoundError();
     }
     return listUsers;
   }
 
-  async readOneUser(id: string) {
+  async readUserById(id: string) {
     if (!id) {
       throw new idEmptyError();
     }
 
-    const user = await UserRepository.showById(id);
+    const user = await UserRepository.findUserById(id);
+
     if (!user) {
       throw new dataNotFoundError();
     }
@@ -49,7 +51,7 @@ class UserService {
     if (!username) {
       return;
     }
-    const player = await UserRepository.showByName(username);
+    const player = await UserRepository.findUserByUsername(username);
     if (!player) {
       throw new dataNotFoundError();
     }
@@ -57,29 +59,35 @@ class UserService {
     return player;
   }
 
-  async updateYourself(id: string, user: UpdateUserProps) {
+  async update(id: string, user: UpdateUserProps) {
     if (!id) {
       if (!id) {
         throw new idEmptyError();
       }
     }
-    const userDoc = await UserRepository.showById(id);
+    const userDoc = await UserRepository.findUserById(id);
     if (!userDoc) {
       throw new dataNotFoundError();
     }
-    const existUsername = await UserRepository.showByName(userDoc.username);
+    const existUsername = await UserRepository.findUserByUsername(
+      userDoc.username
+    );
     if (!existUsername) {
-      const updateUser = await UserRepository.update(id, { ...user });
+      const updateUser = await UserRepository.findByIdAndUpdate(id, {
+        ...user,
+      });
       return updateUser;
     }
     throw new invalidNameError();
   }
 
+  
+
   async destroy(id: string) {
     if (!id) {
       throw new idEmptyError();
     }
-    const user = await UserRepository.destroy(id);
+    const user = await UserRepository.deleteUserById(id);
     if (!user) {
       throw new dataNotFoundError();
     }

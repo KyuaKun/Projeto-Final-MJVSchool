@@ -3,23 +3,23 @@ import { ChampionProps } from "../types/Champion/Champion";
 import { UpdateChampionProps } from "../types/Champion/UpdateChampion";
 
 class ChampionRepository {
-  store(champion: ChampionProps) {
+  createChampion(champion: ChampionProps) {
     return Champion.create(champion);
   }
 
-  update(id: string, champion: UpdateChampionProps) {
+  updateChampion(id: string, champion: UpdateChampionProps) {
     return Champion.findByIdAndUpdate({ _id: id }, { $set: champion });
   }
 
-  index() {
+  listAllChampion() {
     return Champion.find();
   }
 
-  showById(id: string) {
+  findChampionById(id: string) {
     return Champion.findById({ _id: id });
   }
 
-  showByName(name: string) {
+  findChampionByName(name: string) {
     return Champion.findOne({ name: name });
   }
 
