@@ -23,6 +23,9 @@ IP e RP são 'moedas' do jogo. Estão apenas por estética mesmo. <br>
       1: CRUD completo<br>
       2: Exceptions Personalizadas<br>
       3: TOKENS de Autenticação <br>
+      4: Senha encriptografadas com bcrypt <br>
+      5: Rotas com express <br>
+      6: middlewares <br>
       </p>
   </details>
 
