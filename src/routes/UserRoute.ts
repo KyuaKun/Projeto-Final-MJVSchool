@@ -14,7 +14,7 @@ import { invalidUserError } from "../Error/invalidUserError";
 const userRoute = Router();
 
 userRoute.get(
-  "/list_all_user",
+  "/list/user",
   rioterAuthorization,
   async (_req: Request, res: Response) => {
     try {
@@ -36,8 +36,8 @@ userRoute.get(
 );
 
 userRoute.get(
-  "/read_one_user",
-  rioterAuthorization,
+  "/read/user",
+  tokenAuthorization,
   async (req: Request, res: Response) => {
     try {
       const user = await UserService.readUserById(req.userId);
@@ -56,13 +56,13 @@ userRoute.get(
       if (error instanceof invalidUserError) {
         return res.status(error.statusError).send({ message: error.message });
       }
-      return res.status(500).send({ message: "Erro interno do servidor." });
+      return res.status(500).send({ message: "Erro internoooooo do servidor." });
     }
   }
 );
 
 userRoute.get(
-  "/search-player/:username",
+  "/search/player/:username",
   tokenAuthorization,
   async (req: Request, res: Response) => {
     try {
@@ -81,7 +81,7 @@ userRoute.get(
   }
 );
 
-userRoute.post("/create-player", async (req: Request, res: Response) => {
+userRoute.post("/create/player", async (req: Request, res: Response) => {
   try {
     const props: InsertUserProps = req.body;
     const _newUser = await UserService.insertUser({
@@ -102,7 +102,7 @@ userRoute.post("/create-player", async (req: Request, res: Response) => {
   }
 });
 
-userRoute.post("/create-rioter", async (req: Request, res: Response) => {
+userRoute.post("/create/rioter", async (req: Request, res: Response) => {
   try {
     const props: InsertUserProps = req.body;
     const newUser = await UserService.insertUser({
@@ -124,7 +124,7 @@ userRoute.post("/create-rioter", async (req: Request, res: Response) => {
 });
 
 userRoute.put(
-  "/player-update",
+  "/update",
   tokenAuthorization,
   async (req: Request, res: Response) => {
     try {
@@ -151,12 +151,12 @@ userRoute.put(
 );
 
 userRoute.put(
-  "/rioter-update-one/:id",
+  "/rioter/update/account/:id",
   rioterAuthorization,
   async (req: Request, res: Response) => {
     try {
       const props: UpdateUserProps = req.body;
-      const _updateUser = await UserService.update(req.body.id, props);
+      const _updateUser = await UserService.update(req.params.id, props);
       return res.status(200).send({ message: "Usuário atualizdo." });
     } catch (error) {
       if (error instanceof idEmptyError) {
@@ -181,7 +181,7 @@ userRoute.put(
 );
 
 userRoute.delete(
-  "/delete-player/:id",
+  "/delete/account/:id",
   rioterAuthorization,
   async (req: Request, res: Response) => {
     try {

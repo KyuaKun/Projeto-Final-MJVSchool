@@ -70,7 +70,7 @@ class UserService {
       throw new dataNotFoundError();
     }
     const existUsername = await UserRepository.findUserByUsername(
-      userDoc.username
+     user.username as string
     );
     if (!existUsername) {
       const updateUser = await UserRepository.findByIdAndUpdate(id, {

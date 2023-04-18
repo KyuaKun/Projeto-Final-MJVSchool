@@ -1,6 +1,6 @@
 export class loginRequiredError extends Error {
   constructor(
-    message: string = "Necessário fazer login necessário.",
+    message: string = "Necessário fazer login.",
     public statusError: number = 401
   ) {
     super(message);

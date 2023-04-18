@@ -32,10 +32,14 @@ export const tokenAuthorization = async (
     if (!user) {
       throw new invalidUserError();
     }
+
     req.userId = id;
     req.userEmail = email;
     req.userName = username;
     req.userRole = role;
+
+    // console.log(payload);
+    // console.log(req.userId, req.userEmail, req.userName, req.userRole, 'aaaa');
 
     next();
   } catch (error) {

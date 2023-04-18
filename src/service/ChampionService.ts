@@ -13,7 +13,6 @@ class ChampionService {
     if (!name || !price || !role) {
       throw new fieldsEmptyError();
     }
-
     const existDoc = await ChampionRepository.findChampionByName(name);
     if (!existDoc) {
       return ChampionRepository.createChampion(champion);

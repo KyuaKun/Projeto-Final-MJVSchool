@@ -10,9 +10,11 @@ import { ChampionProps } from "../types/Champion/Champion";
 import { UpdateChampionProps } from "../types/Champion/UpdateChampion";
 import { loginRequiredError } from "../Error/loginRequiredError";
 import { invalidUserError } from "../Error/invalidUserError";
+
 const championRoute = Router();
 
 championRoute.get(
+  //Lista todos os campeões. Inclusive os não 'ativados'; O filtro viria pelo frontend para n criar muitas rotas (desnecessariamente)
   "/index",
   tokenAuthorization,
   async (_req: Request, res: Response) => {
@@ -26,6 +28,7 @@ championRoute.get(
       if (error instanceof loginRequiredError) {
         return res.status(error.statusError).send({ message: error.message });
       }
+
       return res.status(500).send({ message: "Erro interno do servidor." });
     }
   }
@@ -117,9 +120,9 @@ championRoute.put(
 
       const props: UpdateChampionProps = req.body;
 
-      const updatedChampion = await ChampionService.updateChampion(id, props);
+      const _updatedChampion = await ChampionService.updateChampion(id, props);
 
-      return res.status(200).send({ message: updatedChampion });
+      return res.status(200).send({ message: "Campo(s) atualizado(s)." });
     } catch (error) {
       if (error instanceof invalidNameError) {
         return res.status(error.statusError).send({ message: error.message });

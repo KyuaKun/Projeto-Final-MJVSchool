@@ -28,7 +28,7 @@ class UserRepository {
 
   verifyUserDoc(username: string, email: string) {
     return User.findOne({ username: username, email: email });
-  } // sem uso
+  }
 
   findUserByUsername(username: string) {
     return User.findOne(
