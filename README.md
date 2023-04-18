@@ -7,7 +7,7 @@ npm i - Para instalar as dependências.
 npm run dev - Para iniciar o aplicativo.
 
 obs:
-Todas as contas possuem '123' como senha
+Todas as contas já registradas, possuem '123' como senha
 ```
 
  <details>
