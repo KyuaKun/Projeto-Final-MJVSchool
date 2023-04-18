@@ -494,10 +494,10 @@
 			]
 		},
 		{
-			"name": "TOKEN",
+			"name": "LOG IN",
 			"item": [
 				{
-					"name": "CREATE TOKEN",
+					"name": "GENERATE TOKEN",
 					"request": {
 						"auth": {
 							"type": "bearer",
