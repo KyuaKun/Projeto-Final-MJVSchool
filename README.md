@@ -7,15 +7,25 @@ npm i - Para instalar as dependências.
 npm run dev - Para iniciar o aplicativo.
 
 obs:
-Todas as contas já registradas, possuem '123' como senha
+Todas as contas já registradas possuem '123' como senha
 ```
-
+ <details>
+  <summary>Sobre o projeto:</summary>
+      <p align="justify">Um projeto baseado em League of Legends, neste projeto você será capaz de criar campeões e usuários/players. Apenas usuários logados poderão usufruir/testar da aplicação/rota. <br>
+Algumas observações: <br>
+level da conta é gerado automaticamente apenas por estética <br>
+IP e RP são 'moedas' do jogo. Estão apenas por estética mesmo. <br>
+</p>
+  </details>
  <details>
   <summary>Funcionalidades:</summary>
       <p align="justify">
       1: CRUD completo<br>
       2: Exceptions Personalizadas<br>
       3: TOKENS de Autenticação <br>
+      4: Senha encriptografadas com bcrypt <br>
+      5: Rotas com express <br>
+      6: middlewares <br>
       </p>
   </details>
 
