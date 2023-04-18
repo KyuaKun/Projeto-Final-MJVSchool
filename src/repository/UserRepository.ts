@@ -22,10 +22,6 @@ class UserRepository {
     );
   }
 
-  showUserDoc(username: string) {
-    return User.findOne({ username: username });
-  } // sem uso
-
   verifyUserDoc(username: string, email: string) {
     return User.findOne({ username: username, email: email });
   }
