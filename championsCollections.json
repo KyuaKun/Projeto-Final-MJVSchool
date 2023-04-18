@@ -1,0 +1,169 @@
+[{
+  "_id": {
+    "$oid": "64332680d60f4c071ca43928"
+  },
+  "name": "Corki",
+  "price": 1350,
+  "role": "Atirador",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-04-09T20:56:32.881Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-09T20:56:32.881Z"
+  }
+},{
+  "_id": {
+    "$oid": "64332684d60f4c071ca4392b"
+  },
+  "name": "Ashe",
+  "price": 1350,
+  "role": "Atirador",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-04-09T20:56:36.890Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-09T20:56:36.890Z"
+  }
+},{
+  "_id": {
+    "$oid": "6433268ad60f4c071ca4392e"
+  },
+  "name": "Samira",
+  "price": 1350,
+  "role": "Atirador",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-04-09T20:56:42.852Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-09T20:56:42.852Z"
+  }
+},{
+  "_id": {
+    "$oid": "64332697d60f4c071ca43931"
+  },
+  "name": "Aatrox",
+  "price": 1350,
+  "role": "Lutador",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-04-09T20:56:55.385Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-09T20:56:55.385Z"
+  }
+},{
+  "_id": {
+    "$oid": "6433269ad60f4c071ca43934"
+  },
+  "name": "Yasuo",
+  "price": 1350,
+  "role": "Lutador",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-04-09T20:56:58.987Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-09T20:56:58.987Z"
+  }
+},{
+  "_id": {
+    "$oid": "6433269fd60f4c071ca43937"
+  },
+  "name": "Yone",
+  "price": 1350,
+  "role": "Lutador",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-04-09T20:57:03.206Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-09T20:57:03.206Z"
+  }
+},{
+  "_id": {
+    "$oid": "643326a6d60f4c071ca4393a"
+  },
+  "name": "Lissandra",
+  "price": 1350,
+  "role": "Mago",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-04-09T20:57:10.281Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-09T20:57:10.281Z"
+  }
+},{
+  "_id": {
+    "$oid": "643326bdd60f4c071ca43940"
+  },
+  "name": "Sylas",
+  "price": 1350,
+  "role": "Mago",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-04-09T20:57:33.700Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-09T20:57:33.700Z"
+  }
+},{
+  "_id": {
+    "$oid": "643edeac87a7a9a172f7ac1b"
+  },
+  "name": "Viktor",
+  "price": 6300,
+  "role": "Mago",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-04-18T18:17:16.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-18T18:17:16.610Z"
+  }
+},{
+  "_id": {
+    "$oid": "643ededa87a7a9a172f7ac1f"
+  },
+  "name": "Gragas",
+  "price": 6300,
+  "role": "Lutador",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-04-18T18:18:02.792Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-18T18:18:02.792Z"
+  }
+},{
+  "_id": {
+    "$oid": "643edefa87a7a9a172f7ac23"
+  },
+  "name": "Talon",
+  "price": 4800,
+  "role": "Assassino",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-04-18T18:18:34.003Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-18T18:18:34.003Z"
+  }
+},{
+  "_id": {
+    "$oid": "643edf6287a7a9a172f7ac27"
+  },
+  "name": "Hecarim",
+  "price": 6300,
+  "role": "Lutador",
+  "active": true,
+  "createdAt": {
+    "$date": "2023-04-18T18:20:18.674Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-18T18:20:18.674Z"
+  }
+}]

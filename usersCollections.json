@@ -1,0 +1,109 @@
+[{
+  "_id": {
+    "$oid": "643ec26065550c916b534dc3"
+  },
+  "email": "kyuaplayer@hotmail.com",
+  "username": "kyua",
+  "password": "$2b$10$rZ69ITDWohD9SOHhb2x1f.cKdpD32zfSUJ.fSzhkKOEhwbISKUphq",
+  "role": 0,
+  "ip": 0,
+  "rp": 0,
+  "active": true,
+  "level": 103,
+  "createdAt": {
+    "$date": "2023-04-18T16:16:32.808Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-18T16:16:32.808Z"
+  }
+},{
+  "_id": {
+    "$oid": "643ec26865550c916b534dc7"
+  },
+  "email": "kyuaplayer2@hotmail.com",
+  "username": "kyua2",
+  "password": "$2b$10$gecZ05uDRCpbnnEtYCmI7u0gk0CspkuDJf6IAW06faHnG6pyDVVpC",
+  "role": 0,
+  "ip": 0,
+  "rp": 0,
+  "active": true,
+  "level": 193,
+  "createdAt": {
+    "$date": "2023-04-18T16:16:40.571Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-18T16:16:40.571Z"
+  }
+},{
+  "_id": {
+    "$oid": "643ec27a65550c916b534dcb"
+  },
+  "email": "kyuaplayer3@hotmail.com",
+  "username": "kyua3",
+  "password": "$2b$10$.Jj44EgEdeHMLAU6tlkYUe1xyiOrjYIvYzNDDKlUsnLxkBsRSK/0K",
+  "role": 0,
+  "ip": 0,
+  "rp": 0,
+  "active": true,
+  "level": 102,
+  "createdAt": {
+    "$date": "2023-04-18T16:16:58.428Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-18T16:16:58.428Z"
+  }
+},{
+  "_id": {
+    "$oid": "643ec28465550c916b534dcf"
+  },
+  "email": "kyuarioter@hotmail.com",
+  "username": "kyuaRioter",
+  "password": "$2b$10$62jNmYC6.InIe1q2wd9sWeSGaudSY6MtDTEpJgF8/.llL2WCVS5pO",
+  "role": 1,
+  "ip": 0,
+  "rp": 0,
+  "active": true,
+  "level": 129,
+  "createdAt": {
+    "$date": "2023-04-18T16:17:08.466Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-18T16:17:08.466Z"
+  }
+},{
+  "_id": {
+    "$oid": "643ec28765550c916b534dd3"
+  },
+  "email": "kyuarioter2@hotmail.com",
+  "username": "kyuaRioter2",
+  "password": "$2b$10$nuDSKFHunNy/y7SkC6zVfOiCHtQfQ2iyddc0jp.xlYocgn7H/9ROO",
+  "role": 1,
+  "ip": 0,
+  "rp": 0,
+  "active": true,
+  "level": 173,
+  "createdAt": {
+    "$date": "2023-04-18T16:17:11.841Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-18T16:17:11.841Z"
+  }
+},{
+  "_id": {
+    "$oid": "643ec28c65550c916b534dd7"
+  },
+  "email": "kyuarioter3@hotmail.com",
+  "username": "kyuaRioter3",
+  "password": "$2b$10$Xxyz0Jtpm81m2ph5dNlX1u2/CcVXRXwu1ro8/gR75OCC7.EAX5kQC",
+  "role": 1,
+  "ip": 0,
+  "rp": 0,
+  "active": true,
+  "level": 110,
+  "createdAt": {
+    "$date": "2023-04-18T16:17:16.321Z"
+  },
+  "updatedAt": {
+    "$date": "2023-04-18T16:17:16.321Z"
+  }
+}]
