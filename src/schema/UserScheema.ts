@@ -9,6 +9,11 @@ const UserScheema = new Schema<UserProps>(
     role: { type: Number, required: true, default: 0 },
     ip: { type: Number, required: true, default: 0 },
     rp: { type: Number, required: true, default: 0 },
+    level: {
+      type: Number,
+      required: true,
+      default: () => Math.floor(Math.random() * 100 + 100),
+    },
     active: { type: Boolean, required: true, default: true },
   },
   { versionKey: false, timestamps: true }

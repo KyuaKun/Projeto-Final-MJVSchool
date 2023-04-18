@@ -6,4 +6,5 @@ export type UserProps = {
   ip: number;
   rp: number;
   active: boolean;
+  level: Number;
 };
