@@ -13,8 +13,8 @@ Todas as contas já registradas possuem '123' como senha
   <summary>Sobre o projeto:</summary>
       <p align="justify">Um projeto baseado em League of Legends, neste projeto você será capaz de criar campeões e usuários/players. Apenas usuários logados poderão usufruir/testar da aplicação/rota. 
 Algumas observações:
-level da conta é gerado automaticamente apenas por estética
-IP e RP são 'moedas' do jogo. Estão apenas por estética mesmo.
+level da conta é gerado automaticamente apenas por estética <br>
+IP e RP são 'moedas' do jogo. Estão apenas por estética mesmo. <br>
 </p>
   </details>
  <details>
