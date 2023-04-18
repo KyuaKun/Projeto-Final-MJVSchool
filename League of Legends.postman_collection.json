@@ -1,0 +1,539 @@
+{
+	"info": {
+		"_postman_id": "76f055c8-8c52-4786-b3f8-407701e42e01",
+		"name": "League of Legends",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20972076"
+	},
+	"item": [
+		{
+			"name": "Champion",
+			"item": [
+				{
+					"name": "INDEX",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2ViYmUwYzhkYzJmYTI5YmEwYThiMiIsInVzZXJuYW1lIjoia3l1YVJpb3RlciIsImVtYWlsIjoia3l1YXJpb3RlckBob3RtYWlsLmNvbSIsInJvbGUiOjEsImlhdCI6MTY4MTgzMzIxNSwiZXhwIjoxNjgxODM2ODE1fQ.VwByJVdfZKRelfDIA0iJ0gTrNuPHfCvNsa-Rt1nbnAQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOL}}/champion/index",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"champion",
+								"index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SHOW ONE BY NAME",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzU4MmUyYzZkNDg0ODg4YmFiNTQ5NSIsInVzZXJuYW1lIjoia3l1YVJpb3RlciIsImVtYWlsIjoiMTIzNDVAaG90bWFpbC5jb20iLCJyb2xlIjoxLCJpYXQiOjE2ODE4Mjg1MTEsImV4cCI6MTY4MTgzMjExMX0.8LQsT8Cd7jvxaKgEHpckwDjea72Nd1hwdPQUvdbtu6w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kha Zix\",\r\n    \"price\": 4800,\r\n    \"role\": \"Selva\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOL}}/champion/show/Corki",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"champion",
+								"show",
+								"Corki"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SHOW ONE BY ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzU4MmUyYzZkNDg0ODg4YmFiNTQ5NSIsInVzZXJuYW1lIjoia3l1YVJpb3RlciIsImVtYWlsIjoiMTIzNDVAaG90bWFpbC5jb20iLCJyb2xlIjoxLCJpYXQiOjE2ODE4Mjg1MTEsImV4cCI6MTY4MTgzMjExMX0.8LQsT8Cd7jvxaKgEHpckwDjea72Nd1hwdPQUvdbtu6w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kha Zix\",\r\n    \"price\": 4800,\r\n    \"role\": \"Selva\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOL}}/champion/read/643326aad60f4c071ca4393d",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"champion",
+								"read",
+								"643326aad60f4c071ca4393d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "STORE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2VjMjg0NjU1NTBjOTE2YjUzNGRjZiIsInVzZXJuYW1lIjoia3l1YVJpb3RlciIsImVtYWlsIjoia3l1YXJpb3RlckBob3RtYWlsLmNvbSIsInJvbGUiOjEsImlhdCI6MTY4MTg0MTgxMSwiZXhwIjoxNjgxODQ1NDExfQ.R42zhOaCw7qjEnM9vQh-7-pAvDJvcqpgJslrTCS_NtU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Hecarim\",\r\n    \"price\": 6300,\r\n    \"role\": \"Lutador\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOL}}/champion/create",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"champion",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzU4MmUyYzZkNDg0ODg4YmFiNTQ5NSIsInVzZXJuYW1lIjoia3l1YVJpb3RlciIsImVtYWlsIjoiMTIzNDVAaG90bWFpbC5jb20iLCJyb2xlIjoxLCJpYXQiOjE2ODE4Mjg1MTEsImV4cCI6MTY4MTgzMjExMX0.8LQsT8Cd7jvxaKgEHpckwDjea72Nd1hwdPQUvdbtu6w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOL}}/champion/update/643326aad60f4c071ca4393d",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"champion",
+								"update",
+								"643326aad60f4c071ca4393d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DESTROY",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2ViYmUwYzhkYzJmYTI5YmEwYThiMiIsInVzZXJuYW1lIjoia3l1YVJpb3RlciIsImVtYWlsIjoia3l1YXJpb3RlckBob3RtYWlsLmNvbSIsInJvbGUiOjEsImlhdCI6MTY4MTgzMzIxNSwiZXhwIjoxNjgxODM2ODE1fQ.VwByJVdfZKRelfDIA0iJ0gTrNuPHfCvNsa-Rt1nbnAQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{LOL}}/champion/remove/643ec14b2d7c98f7e7af2a33",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"champion",
+								"remove",
+								"643ec14b2d7c98f7e7af2a33"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "INDEX",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzU4MmUyYzZkNDg0ODg4YmFiNTQ5NSIsInVzZXJuYW1lIjoia3l1YVByb1Jpb3RlciIsImVtYWlsIjoiMTIzNDVAaG90bWFpbC5jb20iLCJyb2xlIjoxLCJpYXQiOjE2ODE4MzI2MzEsImV4cCI6MTY4MTgzNjIzMX0.I_nN7Io1d4OwyGq4D7s9yC7_UVBS_Q6mYSEXub7vgw0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOL}}/user/list/user",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"user",
+								"list",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "READ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2VjMjg0NjU1NTBjOTE2YjUzNGRjZiIsInVzZXJuYW1lIjoia3l1YVJpb3RlciIsImVtYWlsIjoia3l1YXJpb3RlckBob3RtYWlsLmNvbSIsInJvbGUiOjEsImlhdCI6MTY4MTgzNDY0OSwiZXhwIjoxNjgxODM4MjQ5fQ.ZAUH5ZQTDajWBkZdOFnMYTGL3bL188lJF88R-pr88FU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOL}}/user/read/user",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"user",
+								"read",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH PLAYER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2VjMjg0NjU1NTBjOTE2YjUzNGRjZiIsInVzZXJuYW1lIjoia3l1YVJpb3RlciIsImVtYWlsIjoia3l1YXJpb3RlckBob3RtYWlsLmNvbSIsInJvbGUiOjEsImlhdCI6MTY4MTgzNDY0OSwiZXhwIjoxNjgxODM4MjQ5fQ.ZAUH5ZQTDajWBkZdOFnMYTGL3bL188lJF88R-pr88FU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LOL}}/user/search/player/kyua",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"user",
+								"search",
+								"player",
+								"kyua"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE PLAYER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"kyuaplayer3@hotmail.com\",\r\n    \"username\": \"kyua3\",\r\n    \"password\": \"123\",\r\n    \"role\": 1,\r\n    \"rp\": 1000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOL}}/user/create/player",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"user",
+								"create",
+								"player"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE RIOTER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"kyuarioter3@hotmail.com\",\r\n    \"username\": \"kyuaRioter3\",\r\n    \"password\": \"123\",\r\n    \"role\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOL}}/user/create/rioter",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"user",
+								"create",
+								"rioter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PLAYER UPDATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzU4MmUyYzZkNDg0ODg4YmFiNTQ5NSIsInVzZXJuYW1lIjoia3l1YVJpb3RlciIsImVtYWlsIjoiMTIzNDVAaG90bWFpbC5jb20iLCJyb2xlIjoxLCJpYXQiOjE2ODE4MzIzMjEsImV4cCI6MTY4MTgzNTkyMX0.LlE11_nna2O1aAUQNreU-e9VSXRLCdrtfNd1t79IV6w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"kyuaProRioter\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOL}}/user/update",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RIOTER UPDATE ACCOUNT BY ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2ViYmUwYzhkYzJmYTI5YmEwYThiMiIsInVzZXJuYW1lIjoia3l1YVJpb3RlciIsImVtYWlsIjoia3l1YXJpb3RlckBob3RtYWlsLmNvbSIsInJvbGUiOjEsImlhdCI6MTY4MTgzMzIxNSwiZXhwIjoxNjgxODM2ODE1fQ.VwByJVdfZKRelfDIA0iJ0gTrNuPHfCvNsa-Rt1nbnAQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"13216548954\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOL}}/user/rioter/update/account/643ebbc2c8dc2fa29ba0a8a6",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"user",
+								"rioter",
+								"update",
+								"account",
+								"643ebbc2c8dc2fa29ba0a8a6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE PLAYER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzU4MmUyYzZkNDg0ODg4YmFiNTQ5NSIsInVzZXJuYW1lIjoia3l1YVByb1Jpb3RlciIsImVtYWlsIjoiMTIzNDVAaG90bWFpbC5jb20iLCJyb2xlIjoxLCJpYXQiOjE2ODE4MzI2MzEsImV4cCI6MTY4MTgzNjIzMX0.I_nN7Io1d4OwyGq4D7s9yC7_UVBS_Q6mYSEXub7vgw0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{LOL}}/user/delete/account/643582e2c6d484888bab5495",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"user",
+								"delete",
+								"account",
+								"643582e2c6d484888bab5495"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TOKEN",
+			"item": [
+				{
+					"name": "CREATE TOKEN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzU4MmUyYzZkNDg0ODg4YmFiNTQ5NSIsInVzZXJuYW1lIjoia3l1YVJpb3RlciIsImVtYWlsIjoiMTIzNDVAaG90bWFpbC5jb20iLCJyb2xlIjoxLCJpYXQiOjE2ODE4MzIyODMsImV4cCI6MTY4MTgzNTg4M30._921GEhfVA5KdM8B4WdNj2Mg9v2kYMO1XVYwdJwUp9M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"kyuarioter@hotmail.com\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LOL}}/token/store",
+							"host": [
+								"{{LOL}}"
+							],
+							"path": [
+								"token",
+								"store"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
